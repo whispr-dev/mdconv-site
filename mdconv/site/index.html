@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Markdown preview & text diff — mdconv.site</title>
+<meta name="description" content="Write Markdown, see it instantly. Compare two texts side by side. A private, browser-only Markdown previewer and text diff checker by whispr.dev.">
+<meta name="theme-color" content="#10171e"><link rel="canonical" href="https://mdconv.site/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/promotion.css">
+<script type="module" src="/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#workspace">Skip to editor</a>
+<header class="site-header"><a class="brand" href="/" aria-label="mdconv.site home"><span class="brand-icon" aria-hidden="true">m<span>↓</span></span><span>mdconv<span class="muted">.site</span></span></a><a class="maker" href="https://whispr.dev/">Brought to you by <strong>whispr.dev ↗</strong></a></header>
+<main>
+<section class="utility" aria-labelledby="tool-title">
+<div class="intro-row"><span class="kicker"><span class="status-dot"></span> LESS FRICTION. MORE CLARITY.</span><span class="private-badge">Browser only · no uploads</span></div>
+<div class="title-row"><div><h1 id="tool-title">Words in. Clarity out.</h1><p class="intro" id="mode-description">Write Markdown on the left. See it come alive on the right.</p></div></div>
+<div class="control-bar"><label class="mode-control"><input id="mode" type="checkbox" role="switch" aria-label="Text diff mode"><span class="slider" aria-hidden="true"><span>.md</span><span>.txt</span></span></label><span id="mode-name">Markdown preview</span><div class="control-actions"><button id="example" type="button">Load example</button><button id="undo-clear" type="button" hidden>Undo clear</button><button id="clear" type="button">Clear</button></div></div>
+<p id="error" class="error" role="alert" hidden></p>
+<div id="workspace" tabindex="-1">
+<section id="markdown-mode" aria-label="Markdown workspace">
+<div class="split markdown-split">
+<div class="pane"><div class="pane-heading"><label for="markdown">MARKDOWN</label><div><button id="open-md" type="button">Open file</button><button id="copy-md" type="button">Copy</button></div></div>
+<textarea id="markdown" aria-label="Markdown source" aria-describedby="editor-tip" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" wrap="soft"></textarea><div class="pane-foot"><span id="md-count">0 characters</span><span>.md</span></div></div>
+<div class="pane"><div class="pane-heading"><h2>LIVE PREVIEW</h2><button id="copy-text" type="button" data-result>Copy text</button></div><div id="preview" class="prose" tabindex="0" aria-label="Rendered Markdown"></div><div class="pane-foot"><span id="render-state" role="status">Starting…</span><span>GFM</span></div></div>
+</div>
+<div class="action-bar"><label class="check"><input id="sync-scroll" type="checkbox" checked> Sync scroll</label><div><button id="download-md" type="button">Download .md ↓</button><button id="copy-html" type="button" data-result>Copy HTML</button><button id="download-html" class="primary" type="button" data-result>Download HTML ↓</button></div></div>
+</section>
+<section id="text-mode" aria-label="Text comparison workspace" hidden>
+<div class="split text-inputs">
+<div class="pane"><div class="pane-heading"><label for="original">ORIGINAL</label><div><button id="open-original" type="button">Open file</button><button id="copy-original" type="button">Copy</button></div></div><textarea id="original" aria-label="Original text" aria-describedby="editor-tip" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea><div class="pane-foot"><span id="original-count">0 characters</span><span>BEFORE</span></div></div>
+<div class="pane"><div class="pane-heading"><label for="revised">REVISED</label><div><button id="open-revised" type="button">Open file</button><button id="copy-revised" type="button">Copy</button></div></div><textarea id="revised" aria-label="Revised text" aria-describedby="editor-tip" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea><div class="pane-foot"><span id="revised-count">0 characters</span><span>AFTER</span></div></div>
+</div>
+<div class="diff-heading"><h2>WHAT CHANGED</h2><span id="diff-summary" role="status">Comparing…</span><button id="swap" type="button">Swap sides ⇄</button></div>
+<div class="diff-labels"><span>− ORIGINAL</span><span>+ REVISED</span></div>
+<div id="diff-output" tabindex="0" aria-label="Side-by-side differences"></div>
+<div class="action-bar"><span class="legend"><span class="removed-key">− Removed</span><span class="added-key">+ Added</span></span><button id="download-diff" class="primary" type="button" data-result>Download comparison ↓</button></div>
+<p class="detail-note">Whitespace matters. Windows and Unix line endings are treated alike. A missing final newline is marked ↵.</p>
+</section>
+</div>
+<p class="detail-note" id="editor-tip">In an editor: Tab indents by two spaces. Escape returns to the mode switch.</p>
+<div class="privacy-line"><span class="status-dot"></span><p>Your text stays in this tab. No saving, cookies or analytics. <button id="privacy-open" type="button">How it works ↗</button></p></div>
+<p class="detail-note" id="format-note">Headings, tables, task lists & fenced code. Scripts and embedded media are removed; images display as text.</p>
+<noscript><p class="error">Enable JavaScript to use the local Markdown preview and text comparison. Your text is processed in your browser.</p></noscript>
+</section>
+<aside class="promotion" aria-labelledby="suite-title">
+<div class="promotion-top"><a class="whispr-lockup" href="https://whispr.dev/"><img src="/assets/whispr-logo.svg" alt="" width="28" height="28">whispr.dev</a><span class="ad-label">FROM THE MAKERS OF THIS TOOL</span></div>
+<div class="suite-lockup"><img src="/assets/skeletrace-mark.svg" width="64" height="64" alt="SkeleTrace logo"><div><h2 id="suite-title">SkeleTrace<span>SUITE</span></h2><p>OSINT, made easy.</p></div></div>
+<h3>See the connections.<br><span>Find the story.</span></h3>
+<p class="ad-intro">See more than the surface. Explore relationships, inspect streams and follow the evidence with tools built for open-source investigation.</p>
+<div class="graph-panel"><span class="graph-label">FROM SIGNAL TO EVIDENCE</span><svg class="graph" viewBox="0 0 520 165" role="img" aria-label="Illustration of connected evidence nodes"><g class="graph-lines"><path d="M35 85L115 35L225 70L327 25L425 70L490 35M35 85L135 137L225 70L315 133L425 70L485 137M115 35L135 137M225 70L425 70M327 25L315 133"/></g><g class="graph-dim"><circle cx="35" cy="85" r="5"/><circle cx="115" cy="35" r="6"/><circle cx="135" cy="137" r="6"/><circle cx="327" cy="25" r="6"/><circle cx="315" cy="133" r="6"/><circle cx="490" cy="35" r="5"/><circle cx="485" cy="137" r="5"/></g><circle class="graph-halo" cx="225" cy="70" r="24"/><circle class="graph-hot" cx="225" cy="70" r="9"/><circle class="graph-hot" cx="425" cy="70" r="7"/></svg><span class="illustration-label">ILLUSTRATIVE NETWORK</span></div>
+<div class="products">
+<a href="https://skeletrace.com/home/"><span class="product-mark amber" aria-hidden="true">⌘</span><span><strong>SkeleTrace</strong><small>Map relationships. Trace evidence.</small></span><span aria-hidden="true">↗</span></a>
+<a href="https://skeletrace.com/works-with/"><span class="product-mark teal" aria-hidden="true">⧉</span><span><strong>OSINTropy</strong><small>Connect observations. Keep their sources.</small></span><span aria-hidden="true">↗</span></a>
+<a href="https://skeletrace.com/works-with/"><span class="product-mark purple" aria-hidden="true">≋</span><span><strong>Maxwell’s Demon Detector</strong><small>Make hidden stream patterns visible.</small></span><span aria-hidden="true">↗</span></a>
+<a href="https://skeletrace.com/works-with/"><span class="product-mark blue" aria-hidden="true">⋮⋮</span><span><strong>CrowdWatch</strong><small>Understand aggregate movement.</small></span><span aria-hidden="true">↗</span></a>
+</div>
+<a class="cta" href="https://skeletrace.com/download/">Get SkeleTrace Community <span aria-hidden="true">↗</span></a><div class="cta-meta"><span>Free software · Windows / macOS / Linux</span><a href="https://skeletrace.com/works-with/">Explore the suite ↗</a></div>
+</aside>
+</main>
+<footer><span>© 2026 <a href="https://whispr.dev/">whispr.dev</a></span><span>Small tools. Useful answers.</span><a href="https://ipanswers.space/">IPAnswers ↗</a></footer>
+<input type="file" id="file-input" accept=".md,.markdown,.txt,.json,.js,.ts,.py,.rs,.html,.css,.csv,.xml,.yaml,.yml,text/*" hidden>
+<dialog id="privacy"><div class="dialog-top"><h2>A little tool. A private workspace.</h2><button id="privacy-close" type="button" aria-label="Close privacy details">✕</button></div><p>Markdown rendering and text comparisons run locally in a browser worker. Pasted and opened text is never uploaded by this application. Drafts live in tab memory only: reloading or closing the tab loses them. Download anything you want to keep.</p><p>Markdown uses GitHub Flavored Markdown, with sanitised HTML. Embedded images become descriptive text, and active content, styles, forms and media are removed. Preview links open only when you click them. This is a previewer, not a code runner. Code blocks are displayed as plain text.</p><p>Diff mode compares case and whitespace, normalises CRLF/CR line endings to LF, and marks a missing final newline. Changed lines are aligned in order; that alignment does not claim to identify moved blocks. Each input is limited to 250,000 characters and 5,000 lines; complex comparisons may ask you to use a smaller selection.</p><p>No application cookies, analytics, local storage or advertising trackers. SkeleTrace links are ordinary links. Hosting and proxy providers still process the connection data needed to deliver the page; enabled Cloudflare security features may set their own cookies.</p><p><a href="/vendor/versions.json">Dependency versions</a> · <a href="/vendor/marked-LICENSE.txt">Marked license</a> · <a href="/vendor/dompurify-LICENSE.txt">DOMPurify license</a> · <a href="/vendor/diff-LICENSE.txt">jsdiff license</a></p></dialog>
+<p id="toast" class="toast" role="status" aria-live="polite"></p>
+</body></html>
